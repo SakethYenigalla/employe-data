@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.Random;
+import java.util.UUID;
+
 @Component
 
 public class DataInitilizer implements CommandLineRunner {
@@ -20,8 +23,13 @@ public class DataInitilizer implements CommandLineRunner {
         int count= 50;
         for(int i=0; i<=count;i++){
             Employe emp=new Employe();
-            emp.setName("Saketh"+i);
-            emp.setEmail("saketh"+i+"@gmail.com");
+
+            Random random= new Random();
+            int randomNumber=random.nextInt();
+            UUID uuid=UUID.randomUUID();
+
+            emp.setName("s"+uuid);
+            emp.setEmail(uuid+"."+ randomNumber+"@gmail.com");
             employeeRepository.save(emp);
         }
     }
