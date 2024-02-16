@@ -1,11 +1,12 @@
 package com.example.employedata.employee;
 
 import jakarta.annotation.Nonnull;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.http.ResponseEntity;
+import reactor.core.publisher.Mono;
 
-@Entity
-
+@Document
 public class Employee {
     @Id
     private String id;
@@ -55,4 +56,9 @@ public class Employee {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public Mono<ResponseEntity<String>> map(Object employeeSaved) {
+        return null;
+    }
+
 }
